@@ -1,5 +1,6 @@
 <?php
 include 'cookie.php';
+include 'connectionString.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,11 +29,6 @@ include 'cookie.php';
 <div id="main-content">
     <h2>Update Record</h2>
     <?php
-    $con=mysqli_connect("localhost","root","Shrish@2004","student");
-    if(!$con)
-    {
-      die("connection to this database failed due to " .mysqli_connect_error());
-    }
     $student_id=$_GET['id'];
     $sql= "SELECT * FROM `performance` WHERE `student id`='$student_id';";
     $result=mysqli_query($con,$sql);

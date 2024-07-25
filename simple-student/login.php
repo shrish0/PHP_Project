@@ -1,13 +1,8 @@
+<?php 
+    include 'connectionString.php'
+?>
+
 <?php
-
-$username = "";
-$password = "";
-
-$con = mysqli_connect("localhost","root", "Shrish@2004", "shri_web");
-if (!$con) {
-    die("connection to this database failed due to " . mysqli_connect_error());
-}
-
 $username = $_POST['username'];
 $password = $_POST['password'];
 

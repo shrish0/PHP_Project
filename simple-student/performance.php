@@ -1,5 +1,6 @@
 <?php
-include 'cookie.php';
+    include 'cookie.php';
+    include 'connectionString.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,11 +37,6 @@ include 'cookie.php';
 <div id="main-content">
     <h2>All Records</h2>
     <?php
-     $con=mysqli_connect("localhost","root","Shrish@2004","shri_web");
-     if(!$con)
-     {
-       die("connection to this database failed due to " .mysqli_connect_error());
-     }
      $sql="SELECT * FROM `performance`;  ";
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
 
