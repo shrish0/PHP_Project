@@ -34,7 +34,7 @@
         <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for product names..">
     </div>
     <?php
-     
+     $counter=1;
      $sql="SELECT * FROM `item_table`;";
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
 
@@ -56,7 +56,7 @@
             {
             ?>
             <tr>
-                <td><?php echo $row['product_id']; ?></td>
+                <td><?php echo $counter; ?></td>
                 <td><?php echo $row['product_name']; ?></td>
                 <td><?php echo $row['prize']; ?></td>
                 <td><?php echo $row['brought']; ?></td>

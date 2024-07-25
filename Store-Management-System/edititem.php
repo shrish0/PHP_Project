@@ -13,10 +13,9 @@ $item = mysqli_fetch_assoc($result);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product_name = $_POST['product_name'];
     $prize = $_POST['prize'];
-    $brought = $_POST['brought'];
     $stock = $_POST['stock'];
 
-    $update_sql = "UPDATE `item_table` SET product_name='$product_name', prize='$prize', brought='$brought', stock='$stock' WHERE product_id=$product_id";
+    $update_sql = "UPDATE `item_table` SET product_name='$product_name', prize='$prize', stock='$stock' WHERE product_id=$product_id";
     mysqli_query($con, $update_sql);
 
     header('Location: item.php');
@@ -61,10 +60,6 @@ mysqli_close($con);
             <label>price</label>
             <input type="hidden" name="product_id" value="<?php echo $item['product_id'] ;?>"/>
             <input type="text" name="prize" value="<?php echo $item['prize'] ;?>"/>
-        </div>
-        <div class="form-group">
-            <label>brought</label>
-            <input type="text" name="brought" value="<?php echo $item['brought'] ;?>"/>
         </div>
         <div class="form-group">
             <label>stock</label>

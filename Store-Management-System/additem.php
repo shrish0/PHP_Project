@@ -61,7 +61,7 @@ mysqli_close($con);
        </div>
        <div class="form-group">
            <label>Brought</label>
-           <input type="date" name="brought" />
+           <input type="date" name="brought" required/>
        </div>
        <input class="submit" type="submit" value="Save"/>
    </form>
