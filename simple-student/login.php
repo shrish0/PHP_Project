@@ -20,6 +20,7 @@ if ($num > 0) {
 } else {
     echo "login failed";
     $login = true;
+    header("location:login.php");
 }
 $con->close();
 ?>

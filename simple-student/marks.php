@@ -13,15 +13,23 @@
   <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
   
 <style>
-#wrapper{
-    width: 99%;
-    background-color: #fff;
-    min-height: 100vh;
-}
-body
-{
-    width:100%;
-}
+        #wrapper{
+            width: 99%;
+            background-color: #fff;
+            min-height: 100vh;
+        }
+        body
+        {
+            width:100%;
+        }
+        .filterbox {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        }
+        #searchInput{
+        border-radius:100px;
+        }
 </style>
 </head>
 <body>
@@ -46,14 +54,17 @@ body
         </div>
 
 <div id="main-content">
-    <h2>All Records</h2>
+    <div class="filterbox">
+        <h2 class="filtertext">All Records</h2>
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for student names..">
+    </div>
     <?php
      $sql="SELECT * FROM `marks`";
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
 
      if(mysqli_num_rows($result)>0) {
     ?>
-    <table cellpadding="7px">
+    <table cellpadding="7px" id="markTable">
         <thead>
         <th>Sr no</th>
         <th>name</th>
@@ -110,5 +121,26 @@ body
     ?>
 </div>
 </div>
+<script>
+    function searchTable() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("markTable");
+      tr = table.getElementsByTagName("tr");
+  
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; // Column index 1 is Student Name
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>

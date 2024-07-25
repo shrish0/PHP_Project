@@ -46,6 +46,16 @@ $result = mysqli_query($con, $sql);
       font-size: 14px;
     }
   }
+
+  .filterbox {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+#searchInput{
+  border-radius:100px;
+}
   </style>
 </head>
 <body>
@@ -66,10 +76,12 @@ $result = mysqli_query($con, $sql);
     </div>
 
     <div id="main-content">
-      <h2>All Records</h2>
-      
+      <div class="filterbox">
+      <h2 class="filtertext">All Records</h2>
+      <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for student names..">
+      </div>
       <?php if (mysqli_num_rows($result) > 0) { ?>
-        <table>
+        <table id="attendanceTable">
           <thead>
             <tr>
               <th>srno</th>
@@ -108,6 +120,27 @@ $result = mysqli_query($con, $sql);
 
     </div>
   </div>
+  <script>
+    function searchTable() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("attendanceTable");
+      tr = table.getElementsByTagName("tr");
+  
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; // Column index 1 is Student Name
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>
 

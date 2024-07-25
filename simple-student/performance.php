@@ -11,6 +11,17 @@
   <title>performance</title>
   <link rel="stylesheet" href="css/stylead.css">
   <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
+  <style>
+     .filterbox {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        }
+
+        #searchInput{
+        border-radius:100px;
+        }
+   </style>
 </head>
 <body>
     <div id="wrapper">
@@ -34,14 +45,17 @@
         </div>
 
 <div id="main-content">
-    <h2>All Records</h2>
+      <div class="filterbox">
+        <h2 class="filtertext">All Records</h2>
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for student names..">
+      </div>
     <?php
      $sql="SELECT * FROM `performance`;  ";
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
 
      if(mysqli_num_rows($result)>0) {
     ?>
-    <table cellpadding="7px" width=100%>
+    <table cellpadding="7px" width=100% id="performanceTable">
         <thead>
         <th>Sr no</th>
         <th>student_name</th>
@@ -78,5 +92,26 @@
     ?>
 </div>
 </div>
+<script>
+    function searchTable() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("performanceTable");
+      tr = table.getElementsByTagName("tr");
+  
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; // Column index 1 is Student Name
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>

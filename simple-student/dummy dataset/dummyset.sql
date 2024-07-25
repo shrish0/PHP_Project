@@ -57,20 +57,13 @@ VALUES
     ('Chris Evans', 75, 82, 80, 78, 85, 82, 82, 80, 78, 85, 87, 82);
     
 INSERT INTO attendance (student_name, attendance_math, attendance_ds, attendance_dstl, attendance_coa)
-VALUES ('John Doe', 90, 85, 95, 88);
+VALUES ('John Doe', 90, 85, 95, 88),
+('Jane Smith', 92, 88, 90, 85),
+ ('Alice Johnson', 80, 75, 78, 85),
+ ('Bob Brown', 82, 78, 85, 90),
+('Chris Evans', 75, 82, 80, 78);
 
-INSERT INTO attendance (student_name, attendance_math, attendance_ds, attendance_dstl, attendance_coa)
-VALUES ('Jane Smith', 92, 88, 90, 85);
-
-INSERT INTO attendance (student_name, attendance_math, attendance_ds, attendance_dstl, attendance_coa)
-VALUES ('Alice Johnson', 80, 75, 78, 85);
-
-INSERT INTO attendance (student_name, attendance_math, attendance_ds, attendance_dstl, attendance_coa)
-VALUES ('Bob Brown', 82, 78, 85, 90);
-
-
-INSERT INTO attendance (student_name, attendance_math, attendance_ds, attendance_dstl, attendance_coa)
-VALUES('Chris Evans', 75, 82, 80, 78);
+INSERT INTO admin (username,password) VALUES('shrish','1234');
 
 
 
