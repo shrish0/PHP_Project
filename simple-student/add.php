@@ -22,7 +22,7 @@
                     <a href="performance.php">back</a>
                 </li>
                 <li>
-                    <a href="addp.php">Add</a>
+                    <a href="add.php">Add</a>
                 </li>
                 <li>
             </ul>

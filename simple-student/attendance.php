@@ -17,12 +17,7 @@ $result = mysqli_query($con, $sql);
   <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
   <style>
   /* Move CSS styles into an external stylesheet */
-  #wrapper {
-    width: 90%;
-    margin: 50px auto 0;
-    background-color: #fff;
-    padding: 20px;
-  }
+ 
 
   table {
     width: 100%;
@@ -60,8 +55,13 @@ $result = mysqli_query($con, $sql);
     </div>
     <div id="menu">
       <ul>
-        <li><a href="index.html">Back</a></li>
-        <li><a href="adda.php">Add</a></li>
+        <li><a href="index.php">Back</a></li>
+        <li><a href="add.php">Add</a></li>
+        <li>
+            <a href="#" style="color:yellow;">
+                <?php echo $_COOKIE['username']; ?>
+            </a>  
+        </li>
       </ul>
     </div>
 

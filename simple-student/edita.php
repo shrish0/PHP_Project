@@ -30,7 +30,7 @@ include 'connectionString.php'
     <h2>Update Record</h2>
     <?php
     $student_id=$_GET['id'];
-    $sql= "SELECT * FROM `attendance` WHERE `student id`='$student_id';";
+    $sql= "SELECT * FROM `attendance` WHERE `student_id`='$student_id';";
     $result=mysqli_query($con,$sql);
     if(mysqli_num_rows($result)){
         $row=mysqli_fetch_assoc($result)
@@ -39,12 +39,11 @@ include 'connectionString.php'
        
         <div class="form-group">
             <label>student name</label>
-            <input type="text" name="student_name" disabled value="<?php echo $row['student name']; ?>"/>
-
+            <input type="text" name="student_name" disabled value="<?php echo $row['student_name']; ?>"/>
         </div>
         <div class="form-group">
             <label>attendance math</label>
-            <input type="hidden" name="student_id" value="<?php echo $row['student id'] ;?>"/>
+            <input type="hidden" name="student_id" value="<?php echo $row['student_id'] ;?>"/>
             <input type="text" name="attendance_math" value="<?php echo $row['attendance_math'] ;?>"/>
     </div>
     <div class="form-group">

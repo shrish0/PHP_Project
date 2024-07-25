@@ -4,11 +4,11 @@
 ?>
 <?php
      $name=$_POST["name"];
-     $sql="INSERT INTO `attendance` (`student name`) VALUES ('$name');";
+     $sql="INSERT INTO `attendance` (`student_name`) VALUES ('$name');";
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
-     $sql="INSERT INTO `performance` (`student name`) VALUES ('$name');";
+     $sql="INSERT INTO `performance` (`student_name`) VALUES ('$name');";
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
-     $sql="INSERT INTO `marks` (`student name`) VALUES ('$name');";
+     $sql="INSERT INTO `marks` (`student_name`) VALUES ('$name');";
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
      header("location:add.php");
      mysqli_close($con);

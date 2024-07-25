@@ -20,20 +20,19 @@
         <div id="menu">
             <ul>
                 <li>
-                    <a href="option.html">back</a>
+                    <a href="index.php">back</a>
                 </li>
                 <li>
                     <a href="addp.php">Add</a>
                 </li>
+                <li>
+                    <a href="#" style="color:yellow;">
+                        <?php echo $_COOKIE['username']; ?>
+                    </a>  
+                </li>
             </ul>
         </div>
-<style>
-#wrapper{
-    width: 90%;
-    margin: 50px auto 0;
-    background-color: #fff;
-}
-</style>
+
 <div id="main-content">
     <h2>All Records</h2>
     <?php
@@ -44,25 +43,28 @@
     ?>
     <table cellpadding="7px" width=100%>
         <thead>
-        <th>student_id</th>
+        <th>Sr no</th>
         <th>student_name</th>
         <th>remarks</th>
         <th>Action</th>
         </thead>
         <tbody>
             <?php
+            $counter=0;
             while($row=mysqli_fetch_assoc($result))
             {
+            $counter++;
             ?>
             <tr>
-                <td><?php echo $row['student id']; ?></td>
-                <td><?php echo $row['student name']; ?></td>
+                <td><?php echo $counter; ?></td>
+                <td><?php echo $row['student_name']; ?></td>
                 <td><?php echo $row['remarks']; ?></td>
                 <td>
-                <a href='editp.php?id=<?php echo $row['student id'];?>'>Edit</a>
-                <a href='delete.php?id=<?php echo $row['student id'];?>'>Delete</a>
+                <a href='editp.php?id=<?php echo $row['student_id'];?>'>Edit</a>
+                <a href='delete.php?id=<?php echo $row['student_id'];?>'>Delete</a>
                 </td>
             </tr>
+            
             <?php } ?>
            
         </tbody>

@@ -39,7 +39,7 @@ include 'connectionString.php'
        
         <div class="form-group">
             <label>student name</label>
-            <input type="text" name="student_name" disabled value="<?php echo $row['student name']; ?>"/>
+            <input type="text" name="student_name" disabled value="<?php echo $row['student_name']; ?>"/>
 
         </div>
         <div class="form-group">
