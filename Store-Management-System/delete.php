@@ -1,12 +1,20 @@
 <?php
+include 'connectionString.php'; // Adjust this if your file name is different
+include 'auth.php';
 
-$con=mysqli_connect("localhost","root","Shrish@2004","gross");
-if(!$con)
-{
-die("connection to this database failed due to " .mysqli_connect_error());
+if (!isset($_GET['id'])) {
+    echo "No user ID provided.";
+    exit;
 }
-$emp_id=$_GET['id'];
-$sql= "DELETE FROM employer_table WHERE `employer_table`.`emp_id` = '$emp_id';";
-$result=mysqli_query($con,$sql) or die("query unsuccessful.");
-header("location:employee.php");
+
+$id = intval($_GET['id']);
+
+$delete_sql = "DELETE FROM `user` WHERE `id` = $id";
+if (mysqli_query($con, $delete_sql)) {
+    header("Location: employee.php");
+    exit();
+} else {
+    echo "Error deleting record: " . mysqli_error($con);
+}
+mysqli_close($con);
 ?>

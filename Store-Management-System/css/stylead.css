@@ -3,11 +3,13 @@ body{
     margin: 0;
     padding: 0;
     background: #d1d1d1;
+    width:100%;
+    min-height: 100vh;
 }
 
 #wrapper{
-    width: 90%;
-    margin: 50px auto 0;
+    width: 100%;
+    min-height: 100vh;
     background-color: #fff;
 }
 
@@ -167,4 +169,14 @@ body{
 
 #main-content .pagination li a:hover{
     background-color: #333;
+}
+
+.filterbox {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    }
+
+#searchInput{
+    border-radius:100px;
 }

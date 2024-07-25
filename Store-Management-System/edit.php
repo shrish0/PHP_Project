@@ -1,3 +1,41 @@
+<?php
+include 'connectionString.php'; // Adjust this if your file name is different
+include 'auth.php';
+
+if (!isset($_GET['id'])) {
+    echo "No user ID provided.";
+    exit;
+}
+
+$id = intval($_GET['id']);
+
+// Fetch the user details
+$sql = "SELECT * FROM `user` WHERE `id` = $id";
+$result = mysqli_query($con, $sql);
+
+if (mysqli_num_rows($result) != 1) {
+    echo "User not found.";
+    exit;
+}
+
+$user = mysqli_fetch_assoc($result);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = mysqli_real_escape_string($con, $_POST['username']);
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $salary = mysqli_real_escape_string($con, $_POST['salary']);
+    $role = mysqli_real_escape_string($con, $_POST['role']);
+
+    $update_sql = "UPDATE `user` SET `username` = '$username', `email` = '$email', `salary` = '$salary', `role` = '$role' WHERE `id` = $id";
+    if (mysqli_query($con, $update_sql)) {
+        header("Location: employee.php");
+        exit();
+    } else {
+        echo "Error updating record: " . mysqli_error($con);
+    }
+}
+mysqli_close($con);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,48 +62,27 @@
 
 <div id="main-content">
     <h2>Update Record</h2>
-    <?php
-    $con=mysqli_connect("localhost","root","Shrish@2004","gross");
-    if(!$con)
-    {
-      die("connection to this database failed due to " .mysqli_connect_error());
-    }
-    $emp_id=$_GET['id'];
-    $sql= "SELECT * FROM `employer_table` WHERE emp_id='$emp_id';";
-    $result=mysqli_query($con,$sql);
-    if(mysqli_num_rows($result)){
-        $row=mysqli_fetch_assoc($result)
-    ?>
-    <form class="post-form" action="updatedata.php" method="post">
-        <div class="form-group">
-            <label>Employee Id</label>
-            <input type="text" name="emp_id" hidden value="<?php echo $row['emp_id'] ;?>"/>
-        </div>
+    
+    <form method="POST" action="" class="post-form">
        <div class="form-group">
             <label>Name</label>
-            <input type="text" name="name" value="<?php echo $row['name'] ;?>"/>
+            <input type="text" name="username" value="<?php echo $user['username'] ;?>"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required><br>
+
         </div>
         <div class="form-group">
             <label>Salary</label>
-            <input type="text" name="salary" value="<?php echo $row['salary'] ;?>"/>
-        </div>
-        <div class="form-group">
-            <label>workplace</label>
-            <input type="text" name="workplace" value="<?php echo $row['workplace'] ;?>"/>
-        </div>
-        <div class="form-group">
-            <label>join date</label>
-            <input type="date" name="join_date" value="<?php echo $row['join_date'] ;?>"/>
+            <input type="text" name="salary" value="<?php echo $user['salary'] ;?>"/>
         </div>
         <div class="form-group">
             <label>Designation</label>
-            <input type="text" name="designation" value="<?php echo $row['designation'] ;?>"/>
+            <input type="text" name="role" value="<?php echo $user['role'] ;?>"/>
         </div>
         <input class="submit" type="submit" value="Save"  />
     </form>
-    <?php
-        }
-        ?>
 </div>
 </div>
 </body>

@@ -1,3 +1,28 @@
+<?php
+include 'connectionString.php'; // Adjust this if your file name is different
+include 'auth.php';
+
+// Check if form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = mysqli_real_escape_string($con, $_POST['username']);
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $password= mysqli_real_escape_string($con, $_POST['password']);
+    $salary = mysqli_real_escape_string($con, $_POST['salary']);
+    $role = mysqli_real_escape_string($con, $_POST['role']);
+
+    // Insert new user into the database
+    $insert_sql = "INSERT INTO `user` (`username`, `email`, `salary`, `role`,`password`) VALUES ('$username', '$email', '$salary', '$role','$password')";
+
+    if (mysqli_query($con, $insert_sql)) {
+        header("Location: employee.php");
+        exit();
+    } else {
+        echo "Error adding record: " . mysqli_error($con);
+    }
+}
+mysqli_close($con);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,30 +51,27 @@
         </div>
 <div id="main-content">
     <h2>Add New Record</h2>
-    <form class="post-form" action="saveemp.php" method="post">
-        <div class="form-group">
-            <label>Employee Id</label>
-            <input type="text" name="emp_id" />
-        </div>
+    <form class="post-form" action="" method="post">
+        
        <div class="form-group">
             <label>Name</label>
-            <input type="text" name="name" />
+            <input type="text" name="username" />
+        </div>
+        <div class="form-group">
+            <label>email</label>
+            <input type="text" name="email" />
         </div>
         <div class="form-group">
             <label>Salary</label>
             <input type="text" name="salary" />
         </div>
         <div class="form-group">
-            <label>workplace</label>
-            <input type="text" name="workplace" />
-        </div>
-        <div class="form-group">
-            <label>salary</label>
-            <input type="date" name="join_date" />
-        </div>
-        <div class="form-group">
             <label>Designation</label>
-            <input type="text" name="designation" />
+            <input type="text" name="role" />
+        </div>
+        <div class="form-group">
+            <label>password</label>
+            <input type="text" name="password" />
         </div>
         <input class="submit" type="submit" value="Save"  />
     </form>

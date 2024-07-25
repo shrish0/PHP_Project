@@ -16,28 +16,18 @@
         <div id="menu">
             <ul>
                 <li>
-                    <a href="option.html">back</a>
+                    <a href="index.php">back</a>
                 </li>
                 <li>
                     <a href="additem.php">Add</a>
                 </li>
             </ul>
         </div>
-<style>
-#wrapper{
-    width: 90%;
-    margin: 50px auto 0;
-    background-color: #fff;
-}
-</style>
+
 <div id="main-content">
     <h2>All Records</h2>
     <?php
-     $con=mysqli_connect("localhost","root","Shrish@2004","gross");
-     if(!$con)
-     {
-       die("connection to this database failed due to " .mysqli_connect_error());
-     }
+     
      $sql="SELECT * FROM `item_table`;";
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
 

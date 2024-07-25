@@ -55,9 +55,15 @@
           </div>
         </div>
         <div class="card">
-          <a href="trade.php"><img src="img/trade.jpg" alt="Alps" style="width:100%"></a>
+          <a href="bill.php"><img src="img/bill.jpg" alt="Alps" style="width:100%"></a>
           <div class="content">
-            <p>trade</p>
+            <p>bill</p>
+          </div>
+          </div>
+          <div class="card">
+          <a href="transaction.php"><img src="img/transaction.jpg" alt="Alps" style="width:100%"></a>
+          <div class="content">
+            <p>transaction</p>
           </div>
           </div>
         
