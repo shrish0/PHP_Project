@@ -1,12 +1,15 @@
 <?php
+include 'connectionString.php'; // Adjust the path as needed
 
-$con=mysqli_connect("localhost","root","Shrish@2004","gross");
-if(!$con)
-{
-die("connection to this database failed due to " .mysqli_connect_error());
-}
-$product_id=$_GET['id'];
-$sql= "DELETE FROM item_table WHERE `item_table`.`product_id` = '$product_id';";
-$result=mysqli_query($con,$sql) or die("query unsuccessful.");
-header("location:item.php");
+// Get the product_id from the query string
+$product_id = $_GET['id'];
+
+// Delete the item
+$sql = "DELETE FROM `item_table` WHERE product_id = $product_id";
+mysqli_query($con, $sql);
+
+header('Location: item.php');
+exit();
+
+mysqli_close($con);
 ?>

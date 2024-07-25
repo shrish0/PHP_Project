@@ -1,8 +1,8 @@
 body{
     font:16px arial;
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
     margin: 0;
     padding: 0;
-    background: #d1d1d1;
     width:100%;
     min-height: 100vh;
 }

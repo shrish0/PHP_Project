@@ -1,3 +1,7 @@
+<?php
+  include 'connectionString.php';
+  include 'auth.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +29,10 @@
         </div>
 
 <div id="main-content">
-    <h2>All Records</h2>
+    <div class="filterbox">
+        <h2 class="filtertext">All Records</h2>
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for product names..">
+    </div>
     <?php
      
      $sql="SELECT * FROM `item_table`;";
@@ -33,24 +40,25 @@
 
      if(mysqli_num_rows($result)>0) {
     ?>
-    <table cellpadding="7px">
+    <table cellpadding="7px" id='itemTable'>
         <thead>
-        <th>product_id</th>
+        <th>SrNo</th>
+        <th>product name</th>
         <th>prize</th>
-        <th>product_name</th>
         <th>brought</th>
         <th>stock</th>
         <th>Action</th>
         </thead>
         <tbody>
             <?php
+            $counter=1;
             while($row=mysqli_fetch_assoc($result))
             {
             ?>
             <tr>
                 <td><?php echo $row['product_id']; ?></td>
-                <td><?php echo $row['prize']; ?></td>
                 <td><?php echo $row['product_name']; ?></td>
+                <td><?php echo $row['prize']; ?></td>
                 <td><?php echo $row['brought']; ?></td>
                 <td><?php echo $row['stock']; ?></td>
                 <td>
@@ -58,7 +66,9 @@
                     <a href='deleteitem.php?id=<?php echo $row['product_id'];?>'>Delete</a>
                 </td>
             </tr>
-            <?php } ?>
+            <?php 
+            $counter++;
+        } ?>
            
         </tbody>
     </table>
@@ -70,5 +80,26 @@
     ?>
 </div>
 </div>
+<script>
+    function searchTable() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("itemTable");
+      tr = table.getElementsByTagName("tr");
+  
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; // Column index 1 is Student Name
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>

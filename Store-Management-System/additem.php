@@ -1,3 +1,22 @@
+<?php
+include 'connectionString.php'; // Adjust the path as needed
+
+// Handle form submission for adding a new item
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $product_name = $_POST['product_name'];
+    $prize = $_POST['prize'];
+    $brought = $_POST['brought'];
+    $stock = $_POST['stock'];
+
+    $insert_sql = "INSERT INTO `item_table` (product_name, prize, brought, stock) VALUES ('$product_name', '$prize', '$brought', '$stock')";
+    mysqli_query($con, $insert_sql);
+
+    header('Location: item.php');
+    exit();
+}
+
+mysqli_close($con);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,23 +45,23 @@
         </div>
 <div id="main-content">
     <h2>Add New Record</h2>
-    <form class="post-form" action="saveitem.php" method="post">
+    <form class="post-form" action="" method="post">
        
-        <div class="form-group">
-            <label>product_id</label>
-            <input type="text" name="product_id" />
-        </div>
         <div class="form-group">
             <label>product_name</label>
             <input type="text" name="product_name" />
         </div>
         <div class="form-group">
            <label>price</label>
-           <input type="text" name="price"/>
+           <input type="number" name="prize"/>
        </div>
        <div class="form-group">
            <label>stock</label>
-           <input type="text" name="stock" />
+           <input type="number" name="stock" />
+       </div>
+       <div class="form-group">
+           <label>Brought</label>
+           <input type="date" name="brought" />
        </div>
        <input class="submit" type="submit" value="Save"/>
    </form>
