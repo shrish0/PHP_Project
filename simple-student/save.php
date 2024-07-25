@@ -10,6 +10,6 @@
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
      $sql="INSERT INTO `marks` (`student_name`) VALUES ('$name');";
      $result=mysqli_query($con,$sql) or die("query unsuccessful");
-     header("location:add.php");
+     header("location:index.php");
      mysqli_close($con);
 ?>
