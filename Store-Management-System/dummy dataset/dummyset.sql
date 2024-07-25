@@ -1,71 +1,42 @@
-create database student;
-use student;
+create database store;
 
-CREATE TABLE `student`.`admin` (
-  `username` VARCHAR(100) NOT NULL,
-  `password` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`username`));
-  
-CREATE TABLE performance (
-    `student_id` INT AUTO_INCREMENT PRIMARY KEY,
-    `student_name` VARCHAR(100) NOT NULL,
-    `remarks` TEXT
+use store;
+
+CREATE TABLE user (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    role ENUM('superadmin', 'manager', 'staff') DEFAULT 'staff',
+    salary int 
 );
 
-CREATE TABLE marks (
-    `student_id` INT AUTO_INCREMENT PRIMARY KEY,
-    `student_name` VARCHAR(100) NOT NULL,
-    `ct1_math` INT,
-    `ct2_math` INT,
-    `ct3_math` INT,
-    `ct1_ds` INT,
-    `ct2_ds` INT,
-    `ct3_ds` INT,
-    `ct1_dstl` INT,
-    `ct2_dstl` INT,
-    `ct3_dstl` INT,
-    `ct1_coa` INT,
-    `ct2_coa` INT,
-    `ct3_coa` INT
-);
-
-CREATE TABLE attendance (
-    student_id INT AUTO_INCREMENT PRIMARY KEY,
-    student_name VARCHAR(100) NOT NULL,
-    attendance_math INT  ,
-    attendance_ds INT  ,
-    attendance_dstl INT  ,
-    attendance_coa INT  
+CREATE TABLE item_table (
+    product_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    prize DECIMAL(10, 2) NOT NULL,
+    brought DATE NOT NULL,
+    stock INT UNSIGNED NOT NULL
 );
 
 
-INSERT INTO performance (`student_name`, `remarks`)
-VALUES
-    ('John Doe', 'Excellent performance in all subjects.'),
-    ('Jane Smith', 'Needs improvement in mathematics.'),
-    ('Alice Johnson', 'Good progress in data structures.'),
-    ('Bob Brown', 'Struggling with recent assignments.'),
-    ('Chris Evans', 'Shows great interest in all subjects.');
+insert into user(`username`,`password`,`email`,`role`,`salary`)
+ values('admin','1234','admin@gmail.com','superadmin',100000),
+ ('manager','1234','manager@gmail.com','manager',50000),
+ ('staff','1234','staff@gmail.com','staff',15000),
+ ('shrish','1234','shrish@gmail.com','superadmin',100000);
+ 
+ INSERT INTO item_table (product_name, prize, brought, stock) VALUES
+('Laptop', 999.99, '2024-01-10', 50),
+('Smartphone', 499.99, '2024-02-15', 200),
+('Headphones', 79.99, '2024-03-20', 150),
+('Monitor', 299.99, '2024-04-05', 75);
 
-
-INSERT INTO marks (`student_name`, `ct1_math`, `ct2_math`, `ct3_math`, `ct1_ds`, `ct2_ds`, `ct3_ds`, `ct1_dstl`, `ct2_dstl`, `ct3_dstl`, `ct1_coa`, `ct2_coa`, `ct3_coa`)
-VALUES
-    ('John Doe', 85, 78, 92, 88, 79, 85, 90, 85, 80, 88, 90, 85),
-    ('Jane Smith', 90, 85, 87, 82, 80, 85, 78, 82, 85, 90, 88, 84),
-    ('Alice Johnson', 80, 75, 78, 85, 82, 80, 88, 80, 82, 85, 87, 90),
-    ('Bob Brown', 82, 78, 85, 90, 88, 82, 85, 88, 90, 80, 82, 85),
-    ('Chris Evans', 75, 82, 80, 78, 85, 82, 82, 80, 78, 85, 87, 82);
-    
-INSERT INTO attendance (student_name, attendance_math, attendance_ds, attendance_dstl, attendance_coa)
-VALUES ('John Doe', 90, 85, 95, 88),
-('Jane Smith', 92, 88, 90, 85),
- ('Alice Johnson', 80, 75, 78, 85),
- ('Bob Brown', 82, 78, 85, 90),
-('Chris Evans', 75, 82, 80, 78);
-
-INSERT INTO admin (username,password) VALUES('shrish','1234');
-
-
-
-
-
+CREATE TABLE transaction (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    product_id INT UNSIGNED NOT NULL,
+    quantity INT UNSIGNED NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    total DECIMAL(10, 2) AS (quantity * price) STORED,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
