@@ -1,0 +1,180 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    size: 0;
+}
+.top_bar img
+{
+    position: relative;   
+    
+    width: 100vw;
+    height: 12vh;
+    border-bottom: 2px solid rgb(21, 21, 20)  ;
+   
+}
+.big_image img
+{      position: absolute;
+    width: 100vw;
+    top: 89px;
+    filter: blur(4px);
+    height: 80vh;
+}
+
+.mid_info {
+    position: absolute;
+    border: 7px double;
+    align-items: center;
+    top: 25vh;
+    width: 32%;
+    left: 34%;
+    height: 43%;
+    border-top-right-radius: 60px;
+    border-top-left-radius: 60px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(241 251 255);
+    animation-name: popup 1s linear;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+.logo {
+    border: 7px solid #000000;
+    position: absolute;
+    top: -7px;
+    width: 100%;
+    left: -7px;
+    height: 15vh;
+    border-top-right-radius: 58px;
+    border-top-left-radius: 58px;
+    border-bottom: #000000 solid;
+    color: rgb(0, 0, 0);
+    background-color: blue;
+    border: 7px double;
+}
+.logo img {
+   width: 104%;
+    left: 4px;
+    height: 36vh;
+    position: relative;
+    top: -80px;
+    border-radius: 0;
+    filter: blur(0);
+}
+.sml img
+{
+   position: relative;
+    top: -22vh;
+    width: 18vw;
+    left: 25%;
+    height: 30vh;
+}
+/*input styles from now*/
+.userid {
+    position: absolute;
+    top: 50%;
+    left: 16%;
+    width: 68%;
+    border-bottom: black 3px solid;
+    background: transparent;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    outline: none;
+    text-align: center;
+    font-size: 19px;
+    color: rgb(56, 140, 214);
+}
+label img
+{
+    position: relative;
+    display: flex;
+    width: 7%;
+    top: 1px;
+    left: 65px;
+}
+
+.userid[type=text]:focus
+{
+    border-bottom: #1738ff solid 3PX;
+    box-sizing: border-box;
+    padding: 2PX;
+    font-size: 19PX;
+    text-align: center;
+    color: rgb(0, 129, 242);
+}
+.password
+{
+    position: absolute;
+    top: 206px;
+    left: 73px;
+    width: 21pc;
+    border-bottom: 3px solid;
+    background: transparent;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    outline: none;
+    text-align: center;
+}
+.password[type=password]:focus
+{
+    
+        border-bottom: #1738ff solid 3PX;
+        box-sizing: border-box;
+        padding: 2PX;
+        font-size: 19PX;
+        text-align: center;
+        color: red;
+    
+}
+.submitbutton
+{
+    position: absolute;
+    top: 267px;
+    left: 79px;
+    border: 3px solid;
+    border-radius: 81px;
+    width: 120px;
+    height: 33px;
+    background-color: #f0f0bf;
+    text-align: center;
+    font-style:   unset ;
+    font-size: 18PX;
+    pointer-events: painted;
+}
+
+.link
+{
+    position: absolute;
+    top: 295px;
+    left: 326px;
+    
+}
+/*bottom bar*/
+.bottem_bar
+{
+    position: relative;
+    top: 560px;
+    background-color: #1a237e;
+    width: 100vw;
+    height: 13vh;
+    border-top: black 2px solid;
+}
+.a
+{
+    color: rgb(177, 5, 5);
+    font-size: 18px ;
+    pointer-events: painted;
+    text-decoration: none;
+    
+
+}
+.a:active
+{
+    color: rgb(255, 231, 231);
+    font-size: 18px ;
+    pointer-events: painted;
+    text-decoration: none;
+}
+/*animations partys*/

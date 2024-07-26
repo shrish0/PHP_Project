@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+}
+body{
+    background: #efefef;
+}
+.container{
+    max-width: 100%;
+    margin: auto;
+    margin-top: 4%;
+   font-family:sans-serif;
+   letter-spacing: 0.5px;
+}
+.container-head{
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 10%;
+    border-bottom: none;
+    display: inline-block;
+    background-color: rgba(18, 18, 24, 0.886);
+}
+.container-head img{
+    position: relative;
+    border-radius: 50%;
+    max-width: 100%;
+    width: 5vw;
+    height: 8vh;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: left;
+}
+.active{
+    position: relative;
+    width: 120px;
+    float: left;
+    margin-top:5px;
+    margin-left: 5px;
+}
+.active h4{
+    position: relative;
+font-size: 18px;
+color: #fff;
+}
+.active h6{
+position: relative;
+font-size: 10px;
+color: #fff;    
+}
+.container-rytt{
+    position: relative;
+    margin-top: 20px;
+    float: right;
+    margin-right: 5px;
+}
+.contianer-icons{
+    position: relative;
+    width:120px;
+    float: right;
+    margin-top: 12px;
+    margin-right: 10px;
+}
+
+.bx{
+  width: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px;
+}
+.chat-page{
+    padding: 0 0 50px 0;
+}
+.msg-inbox{
+    border: 1px solid #ccc;
+    overflow: hidden;
+    padding-bottom:  30px;
+}
+.chats{
+    padding: 30px 15px 0 25px;
+}
+.msg-page{
+    height: 516px;
+    overflow-y: auto;
+}
+.reciecved-chats {
+    
+     border-radius: 50%;
+     display: inline-block;
+     color: gainsboro;
+     align-items: center ;
+      width:px;
+      margin-left: 20px;
+}
+.reciecved-chats-img{
+    width: 5vw;
+    height: 8vh;
+    border-radius: 50%;
+
+}
+.reciecved-chats-img img{
+    width: 5vw;
+    height: 8vh;
+    border-radius: 50%;
+}
+.received-msg {
+    margin-left: 30px;
+    margin-top: 2px;
+    display: flex;
+    width: 50%;
+}
+.recevied-msg-inbox{
+    width: 57%;
+}
+.recevied-msg-inbox {
+
+    background: #cac5c5 none repeat scroll 0 0;
+    border-radius: 10px;
+    font-size: 14px;
+    margin: 0;
+    padding: 5px 10px 5px 12px;
+    width: 100%;
+}
+.received-msg p{
+    font-size: 20px;
+    padding-left: 20px;
+}
+.received-msg span{
+    float: left;
+    font-size: 10px;
+}
+
+.msg-bottom{
+    position: relative;
+    height: 10%;
+    background-color: rgb(20, 20, 223);
+}
+.input-group{
+    float: left;
+    margin-top: 13px;
+    margin-right: 20px;
+    outline: none !important;
+    border-radius: 20px;
+    width: 61%;
+    background-color: #fff;
+}
+.form-control{
+    border: none !important;
+    border-radius: 20px!important;
+}
+.input-group-text{
+    background: transparent !important;
+    border: none !important;   
+}
+.input-group .bx{
+    color: rgb(20, 20, 223);
+    float: right;
+}
+.bottom-icons{
+    width: 35%;
+}
+.bottom-icons .bx{
+    float: left;
+    margin-top: 25px;
+    color: rgb(20, 20, 223);
+}
